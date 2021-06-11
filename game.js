@@ -18,15 +18,6 @@ vkBridge
 		console.log(error);
 	});
 
-//vkBridge.send("VKWebAppGetAuthToken", {"app_id": 7571672, "scope": ""})
-//	.then(data => {
-//		user.accessToken = data.access_token;
-//		console.log(data);
-//	})
-//	.catch(error => {
-//		console.log(error);
-//	});
-
 function loadSaves(){
 	function checkIsNumber(x) {
 	  	if (isNaN(parseInt(x))){
@@ -90,26 +81,6 @@ function saveSaves(){
 			console.log("Something went wrong");
 		});
 }
-
-//function saveRecord(){
-//	vkBridge.sendPromise("VKWebAppCallAPIMethod", {
-//        "method": "secure.addAppEvent",
-//        "params": {
-//            "user_id": user.id,
-//            "v":"5.122",
-//            "activity_id": 2,
-//            "value": user.highScore,
-//            "access_token": user.accessToken,
-//            "client_secret": null
-//        }
-//    })
-//    	.then(data => {
-//			console.log(data);
-//		})
-//		.catch(error => {
-//			console.log(error);
-//		});;
-//}
 
 function shareRecordClick(){
 	vkBridge.send("VKWebAppShowWallPostBox", {"message": "У меня новый рекорд в игре Космическая битва!\nМой новый рекорд: " + user.highScore + "! Присоединись: https://vk.com/app7571672"} );
