@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Game</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, viewport-fit=cover">
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet"> 
+</head>
+<body id="main-body">
+	<div id="container" class="container">
+		<canvas id="main-canvas" width="100vw" height="100vh"></canvas>
+		<button id="shop-bttn" class="bttn shop-bttn" onclick="shopClick(); updateShop(); this.blur();">магазин</button>
+		<button id="back-bttn" class="bttn shop-bttn" onclick="backClick(); this.blur();">назад</button>
+		<button id="share-bttn" class="bttn share-bttn" visible="hidden" onclick="shareRecordClick(); this.blur();">поделиться</button>
+		<button id="replay-bttn" class="bttn replay-bttn" onclick="replayClick(); this.blur();">играть</button>
+		<div>
+		<div id="shop-pannel" class="shop-container">
+			<div class="shop-element">
+				 <img class="shop-img" src="graphics/spaceship.png">
+				 <div class="shop-element-inner">
+				 	<button id="button-buy-0" class="bttn" onclick="buyClick(0, 0); this.blur();">0</button>
+				 </div>
+			</div>
+			<div class="shop-element">
+				 <img class="shop-img" src="graphics/spaceship-pink.png">
+				 <div class="shop-element-inner">
+				 	<button id="button-buy-1" class="bttn" onclick="buyClick(1, 200); this.blur();">200</button>
+				 </div>
+			</div>
+			<div class="shop-element">
+				 <img class="shop-img" src="graphics/spaceship-green.png">
+				 <div class="shop-element-inner">
+				 	<button id="button-buy-2" class="bttn" onclick="buyClick(2, 200); this.blur();">200</button>
+				 </div>
+			</div>
+			<div class="shop-element">
+				 <img class="shop-img" src="graphics/spaceship-violet.png">
+				 <div class="shop-element-inner">
+				 	<button id="button-buy-3" class="bttn" onclick="buyClick(3, 200); this.blur();">200</button>
+				 </div>
+			</div>
+		</div>
+		</div>
+	</div>
+	<script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
+	<script type="text/javascript" src="game.js"></script>
+</body>
+</html>

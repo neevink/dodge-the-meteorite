@@ -1,0 +1,89 @@
+html, body{
+	margin: 0;
+   	overflow: hidden;
+    font-family: Roboto;
+
+    display: flex;
+    justify-content: center;
+
+    background-color: #2C3052;
+}
+
+.container{
+	width: 100%;
+	height: 100%;
+}
+
+.bttn{
+	position: absolute;
+	display: block;
+
+	background-color: #555;
+	color: white;
+	font-size: 16px;
+	padding: 12px 24px;
+	border: none;
+	cursor: pointer;
+	border-radius: 10px;
+}
+
+.bttn:active {
+  	background-color: black;
+}
+
+.shop-bttn{
+	position: absolute;
+
+	left: 1%;
+	bottom: 1%;
+}
+
+.share-bttn{
+	display: none;
+
+	position: absolute;
+	
+	left: 1%;
+	bottom: 1%;
+}
+
+.replay-bttn{
+	position: absolute;
+
+	top: 55%;
+	left: calc(50% - 48px);
+}
+
+.shop-container{
+	position: absolute;
+	top: 10%;
+
+	width: 300px;
+	height: 75%;
+	overflow-y: scroll;
+	scrollbar-color: #334769 #2C3052;
+	scrollbar-width: thin;
+}
+
+.shop-element{
+	width: 95%;
+	height: 30%;
+
+	background-color: #334769;
+
+	border-radius: 10px;
+	margin: 10px;
+}
+
+.shop-element-inner{
+	height: 100%;
+
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.shop-img{
+	height: 100%;
+	float: left;
+}
