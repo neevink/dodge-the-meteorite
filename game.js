@@ -4,7 +4,7 @@ var user = {
 	id:0,
 	totalScore: 0,
 	highScore: 0,
-	boughtSpaceships:"snnn" //selected, not bought, bought
+	boughtSpaceships:"snnnn" //selected, not bought, bought
 }
 
 vkBridge.send("VKWebAppInit", {});
@@ -123,7 +123,7 @@ shopPannel.height = cnvs.height;
 
 const buyButtons = [];
 
-for(let i = 0; i < 4; i++){
+for(let i = 0; i < 5; i++){
 	buyButtons.push(document.getElementById("button-buy-" + i.toString()));
 }
 
@@ -139,11 +139,28 @@ spaceship2Img.src = "graphics/spaceship-green.png";
 const spaceship3Img = new Image();
 spaceship3Img.src = "graphics/spaceship-violet.png";
 
+const spaceship4Img = new Image();
+spaceship4Img.src = "graphics/spaceship-upgraded.png";
+
 const meteoriteImg = new Image();
 meteoriteImg.src = "graphics/meteorite.png";
 
 const coinImg = new Image();
 coinImg.src = "graphics/coin.png";
+
+const bgMusic = new Audio('sounds/background.mp3');
+bgMusic.loop = true;
+bgMusic.volume = 0.3;
+const hitSound = new Audio('sounds/hit.ogg');
+hitSound.volume = 0.5;
+const coinSound = new Audio('sounds/coin.ogg');
+coinSound.volume = 0.4;
+const buttonSound = new Audio('sounds/button.ogg');
+buttonSound.volume = 0.3;
+const buySound = new Audio('sounds/buy.ogg');
+buySound.volume = 0.5;
+const moveSound = new Audio('sounds/move.ogg');
+moveSound.volume = 0.3;
 
 var spaceship = {
 	enable: true,
@@ -328,12 +345,18 @@ function update(){
 				if(spaceship.enable && magnitude(spaceship.x - meteorites[i].x, spaceship.y - meteorites[i].y) < spaceship.w*0.6){
 					meteorites[i].enable = false;
 					if(meteorites[i].isCoin){
+						coinSound.currentTime = 0;
+						coinSound.play();
 						score+=10;
 					}
 					else{
 						spaceship.enable = false;
 						meteorites[i].enable = false;
-						
+
+						bgMusic.pause();
+						hitSound.currentTime = 0;
+						hitSound.play();
+
 						firstPauseFrame = true;
 						pause = true;
 						if(score > highScore){
@@ -390,6 +413,8 @@ function updateScreen(){
 
 function clickSpaceOrMouse(){
 	if(!pause){
+		moveSound.currentTime = 0;
+		moveSound.play();
 		cahangeDirection();
 	}
 }
@@ -434,6 +459,9 @@ function makeMeteorite(){
 }
 
 function replayClick(){
+	buttonSound.currentTime = 0;
+	buttonSound.play();
+
 	score = 0;
 
 	for(i = 0; i < meteorites.length; i++){
@@ -442,14 +470,21 @@ function replayClick(){
 
 	spaceship.enable = true;
 
+	bgMusic.currentTime = 0;
+	bgMusic.play();
+
 	pause = false;
 }
 
 function shopClick(){
+	buttonSound.currentTime = 0;
+	buttonSound.play();
 	shop = true;
 }
 
 function backClick(){
+	buttonSound.currentTime = 0;
+	buttonSound.play();
 	shop = false;
 }
 
@@ -474,6 +509,9 @@ function buyClick(indx, price){
 	if(user.boughtSpaceships[indx] == 'n'){
 		console.log(user.boughtSpaceships[indx]);
 		if(user.totalScore >= price){
+			buySound.currentTime = 0;
+			buySound.play();
+
 			user.totalScore -= price;
 			total -= price;
 
@@ -516,11 +554,9 @@ function awake(){
 	for(let i = 0; i < 10; i++){
 		meteorites.push(new Meteorite());
 	}
-
-
-
 	let autoInterval = setInterval(update, 15);
 	let autoInterval2 = setInterval(makeMeteorite, 700);
+
 	document.addEventListener("mousedown", clickSpaceOrMouse);
 	document.addEventListener("keydown", (event) => {if(event.code == 'Space') clickSpaceOrMouse()});
 }
