@@ -30,7 +30,7 @@ function loadSaves(){
 
 	function checkIsSaves(x){
 		if(x){
-			while(x < user.boughtSpaceships.length){
+			while(x.length < user.boughtSpaceships.length){
 				x+='n';
 			}
 			return x;
